@@ -1,0 +1,40 @@
+{{define "page-actions"}}
+{{end}}
+
+
+{{ define "content" }}
+
+<h1>Search results for <strong>{{.Query}}</strong></h1>
+
+{{if .Error}}
+
+<div class="alert alert-danger" role="alert">
+  <strong>Error</strong>: {{.Error}}
+</div>
+
+{{else}}
+
+{{if .SearchResults}}
+
+<ul>
+  {{range .SearchResults}}
+<li>
+  <a href="/{{.Title}}">{{.Title}}</a>
+  <ul>
+    {{range .Lines}}
+    <li>{{.}}</li>
+    {{end}}
+  </ul>
+</li>
+{{end}}
+</ul>
+
+{{else}}
+
+<p>No results found.</p>
+
+{{end}}
+
+{{end}}
+
+{{end}}

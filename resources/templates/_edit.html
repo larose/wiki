@@ -1,0 +1,54 @@
+{{define "page-actions"}}
+
+<a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default pull-right quick btn-sm" role="button">Delete</a>
+<a href="/{{.Title}}" class="btn btn-default pull-right quick btn-sm" role="button">View Page</a>
+
+{{end}}
+
+
+{{define "content"}}
+
+<h1>{{.Title}} <small>{{.SubTitle}}</small></h1>
+
+<form method="POST">
+  {{if .Edit}}{{else}}
+  <input type="hidden" name="body" value="{{.BodySource}}">
+  <input type="hidden" name="message" value="{{.CommitMessage}}">
+  {{end}}
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <button type="submit" class="btn btn-primary" name="action" value="save">Save</button>
+      <a href="/{{.Title}}" class="btn btn-default">Cancel</a>
+
+      <div class="btn-group">
+	{{if .Edit}}
+	<button type="button" class="btn btn-default active">Edit</button>
+	{{else}}
+	<button type="submit" class="btn btn-default" name="action" value="edit">Edit</button>
+	{{end}}
+
+	{{if .Preview}}
+	<button type="button" class="btn btn-default active">Preview</button>
+	{{else}}
+	<button type="submit" class="btn btn-default" name="action" value="preview">Preview</button>
+	{{end}}
+
+	{{if .Diff}}
+	<button type="button" class="btn btn-default active">Diff</button>
+	{{else}}
+	<button type="submit" class="btn btn-default" name="action" value="diff">Diff</button>
+	{{end}}
+      </div>
+
+    </div>
+  </div>
+
+  {{template "edit-content" .}}
+
+</form>
+
+{{template "delete-modal" .}}
+
+{{end}}

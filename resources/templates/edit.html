@@ -1,0 +1,8 @@
+{{define "edit-content"}}
+
+<textarea name="body" rows="15" class="form-control">{{.BodySource}}</textarea>
+<div>
+  <input type="text" name="message" class="form-control" placeholder="Commit message" value="{{.CommitMessage}}">
+</div>
+
+{{end}}

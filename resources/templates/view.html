@@ -1,0 +1,57 @@
+{{define "page-actions"}}
+
+<div class="dropdown pull-right quick">
+  <button class="btn btn-default dropdown-toggle  btn-sm" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation">
+      <a role="menuitem" tabindex="-1" href="/{{.Title}}?action=view&format=printable">
+      	Printable version
+      </a>
+    </li>
+    <li role="presentation">
+      <a role="menuitem" tabindex="-1" href="/{{.Title}}?action=view&format=raw">
+      	View Source
+      </a>
+    </li>
+    <li role="presentation">
+      <a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#confirm-delete" href="#">
+      	Delete
+      </a>
+    </li>
+  </ul>
+</div>
+
+<a href="/{{.Title}}?action=history" class="btn btn-default pull-right quick btn-sm" role="button">History</a>
+
+<a href="/{{.Title}}?action=edit" class="btn btn-default pull-right quick btn-sm" role="button">Edit</a>
+
+{{end}}
+
+
+{{ define "content" }}
+
+<h1>{{.Title}}{{if .Revision}} <small>{{.Revision}}</small>{{end}}</h1>
+{{if .Revision}}
+<form action="/{{.Title}}?action=edit" method="POST">
+  <input type="hidden" name="title" value="{{.Title}}">
+  <input type="hidden" name="body" value="{{.RawBody}}">
+  <input type="hidden" name="message" value="Revert to {{.Revision}}">
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <button type="submit" class="btn btn-default" value="revert">Revert</button>
+      <a href="/{{.Title}}" class="btn btn-default">Cancel</a>
+    </div>
+  </div>
+
+</form>
+
+{{end}}
+<div id="body">{{.Body}}</div>
+
+{{template "delete-modal" .}}
+
+{{end}}

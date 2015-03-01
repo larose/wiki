@@ -1,0 +1,25 @@
+{{define "page-actions"}}
+{{end}}
+
+
+{{define "content"}}
+
+<h1>{{.Title}}</h1>
+
+{{if .Error}}
+
+<div class="alert alert-danger" role="alert">
+  <strong>Error</strong>: {{.Error}}
+</div>
+
+{{else}}
+
+<ul>
+  {{range .Titles}}
+  <li><a href="/{{.}}?action=history">{{.}}</a></li>
+  {{end}}
+</ul>
+
+{{end}}
+
+{{end}}

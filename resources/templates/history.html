@@ -1,0 +1,47 @@
+{{define "page-actions"}}
+
+<a href="/{{.Title}}" class="btn btn-default pull-right quick btn-sm" role="button">View Page</a>
+
+{{end}}
+
+{{define "content"}}
+
+<h1>{{.Title}} <small>history</small></h1>
+
+{{if .Error}}
+
+<div class="alert alert-danger" role="alert">
+  <strong>Error</strong>: {{.Error}}
+</div>
+
+{{else}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {{range .Commits}}
+  {{if .Delete}}
+  <tr>
+    <td>{{.Date}}</td>
+    <td>(delete)</td>
+  </tr>
+  {{else}}
+  <tr>
+    <td>{{.Date}}</td>
+    <td><a href="/{{$.Title}}?action=view&revision={{.ID}}">{{.Message}}</a></td>
+  </tr>
+  {{end}}
+  </tbody>
+{{end}}
+
+</table>
+
+{{end}}
+
+{{end}}

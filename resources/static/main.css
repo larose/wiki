@@ -1,0 +1,18 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.glyphicon-none:before {
+  content: "\2122";
+  color: transparent !important;
+}
+
+.quick {
+  margin-left: 3px;
+  margin-right: 3px;
+}
