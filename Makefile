@@ -1,8 +1,3 @@
-DEPENDENCIES = \
-  github.com/gorilla/mux \
-  github.com/mjibson/esc \
-  github.com/russross/blackfriday
-
 ifdef DATA_DIR
 	OPTIONS=--data-dir $(DATA_DIR)
 endif
@@ -10,14 +5,14 @@ endif
 
 all: run
 
-bootstrap:
-	go get $(DEPENDENCIES)
-
 clean:
 	rm -f resources.go wiki
 
 fmt:
 	go fmt
+
+get:
+	go get
 
 resources.go: resources/*
 	$(GOPATH)/bin/esc -o resources.go -prefix="resources" `find resources \( -name "*.css" -o -name "*.js" -o -name "*.html" \)`
@@ -29,4 +24,4 @@ wiki: *.go
 	go build
 
 
-.PHONY: all bootstrap clean fmt run
+.PHONY: all clean fmt get run

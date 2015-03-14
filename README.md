@@ -15,7 +15,7 @@ With `go get`:
 or from the source directory:
 
 ```
-$ make bootstrap # get dependencies
+$ go get
 $ make wiki
 ```
 
