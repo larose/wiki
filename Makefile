@@ -1,3 +1,5 @@
+SOURCES := git_repo.go git_storage.go handlers.go templates.go resources.go wiki.go
+
 ifdef DATA_DIR
 	OPTIONS=--data-dir $(DATA_DIR)
 endif
@@ -19,9 +21,9 @@ resources.go: resources/*
 	go fmt resources.go
 
 run: resources.go
-	go run git_repo.go git_storage.go handlers.go templates.go resources.go wiki.go $(OPTIONS)
+	go run $(SOURCES) $(OPTIONS)
 
-wiki: *.go
+wiki: $(SOURCES)
 	go build
 
 
