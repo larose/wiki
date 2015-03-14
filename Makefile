@@ -16,6 +16,7 @@ get:
 
 resources.go: resources/*
 	$(GOPATH)/bin/esc -o resources.go -prefix="resources" `find resources \( -name "*.css" -o -name "*.js" -o -name "*.html" \)`
+	go fmt resources.go
 
 run: resources.go
 	go run git_repo.go git_storage.go handlers.go templates.go resources.go wiki.go $(OPTIONS)

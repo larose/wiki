@@ -51,6 +51,17 @@ Notes:
 - You should run the wiki behind a reverse proxy with authentication.
 
 
+# Keyboard Shortcuts
+
+## Editing
+
+| Action  | Shortcut        |
+| :-----: |:---------------:|
+| diff    | `alt+shift + d` |
+| edit    | `alt+shift + e` |
+| preview | `alt+shift + p` |
+| save    | `alt+shift + s` |
+
 # Contributing
 
 Looking to contribute? Here are some ideas:

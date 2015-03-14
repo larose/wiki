@@ -19,26 +19,26 @@
   <div class="panel panel-default">
     <div class="panel-body">
 
-      <button type="submit" class="btn btn-primary" name="action" value="save">Save</button>
+      <button type="submit" id="save" class="btn btn-primary" name="action" value="save">Save</button>
       <a href="/{{.Title}}" class="btn btn-default">Cancel</a>
 
       <div class="btn-group">
 	{{if .Edit}}
 	<button type="button" class="btn btn-default active">Edit</button>
 	{{else}}
-	<button type="submit" class="btn btn-default" name="action" value="edit">Edit</button>
+	<button type="submit" id="edit" class="btn btn-default" name="action" value="edit">Edit</button>
 	{{end}}
 
 	{{if .Preview}}
 	<button type="button" class="btn btn-default active">Preview</button>
 	{{else}}
-	<button type="submit" class="btn btn-default" name="action" value="preview">Preview</button>
+	<button type="submit" id="preview"  class="btn btn-default" name="action" value="preview">Preview</button>
 	{{end}}
 
 	{{if .Diff}}
 	<button type="button" class="btn btn-default active">Diff</button>
 	{{else}}
-	<button type="submit" class="btn btn-default" name="action" value="diff">Diff</button>
+	<button type="submit" id="diff" class="btn btn-default" name="action" value="diff">Diff</button>
 	{{end}}
       </div>
 
